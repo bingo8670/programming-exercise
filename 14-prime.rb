@@ -3,6 +3,7 @@
 def is_prime(n)
   i = 2
   while (i <= n/2)
+    
     a = n % i
     if a != 0
       i+=1
