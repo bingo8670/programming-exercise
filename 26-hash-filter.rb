@@ -8,9 +8,20 @@ arr = [
   { "name" => "Vincent", "age" => 6 },
 ]
 
-# ....
+def filter(arr)
+  array = []
+  arr.each do |arr|
+    if arr["age"] >=18
+      array << arr
+    end
+  end
+  array.sort! { |x,y| x["age"] <=> y["age"]}
+  return array
+end
 
-puts "所有成年人，并由小到大: _________"
+array = filter(arr)
+
+puts "所有成年人，并由小到大: __#{array}_______"
 
 # 答案应该是
 #[

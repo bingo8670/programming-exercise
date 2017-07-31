@@ -5,13 +5,13 @@
 # 如果 BMI 介于 18.5 ~ 24，显示正常
 
 print "请输入您的体重(公斤)，然后按 Enter: "
-weight = gets.to_f
+weight = gets.to_i
 
-print "请输入您的身高(厘米)，然后按 Enter: "
+print "请输入您的身高(米)，然后按 Enter: "
 height = gets.to_f
 
 # .....
-a = weight/(height*height/10000)
+a = weight/(height*height)
 
 
 if a<18.5
