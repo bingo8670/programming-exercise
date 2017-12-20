@@ -2,7 +2,7 @@
 
 def is_prime(n)
   i = 2
-  while ( i <= n-1 )
+  while ( i <= n-1 ) # 可以得出正确结论，但是效能不行
     return false if n <= 1 || n % i == 0
     i += 1
   end

@@ -2,7 +2,7 @@
 
 def is_prime(n)
   i = 2
-  while ( i <= (n ** 0.5) )
+  while ( i <= (n ** 0.5) )  # 非质数在小于开方数的区间内必有可整除的数
     return false if n <= 1 || n % i == 0
     i += 1
   end
