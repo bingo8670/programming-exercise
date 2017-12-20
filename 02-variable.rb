@@ -7,6 +7,6 @@ puts "a 是 #{a}"
 puts "b 是 #{b}"
 
 # ...
-
+puts "交换数值后"
 puts "a 应该是 2，现在是 #{b}"
 puts "b 应该是 1，现在是 #{a}"
