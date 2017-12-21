@@ -1,2 +1,5 @@
 # programming-exercise
-基础练习
+1-30 基础练习,ihower老师
+
+codewars
+31-
