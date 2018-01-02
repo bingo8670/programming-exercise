@@ -41,4 +41,4 @@ def productFib(prod)
   [a, b, b * a == prod]
 end
 
-p productFib(800)
+p productFib(80)
