@@ -1,3 +1,10 @@
+=begin
+验证一个数字是否是斐波那契数相邻两个数的乘积
+
+斐波那契数是在以下的整数序列（FN）的数字：
+0，1，1，2，3，5，8，13，21，34，55，89，144，233，...
+
+
 # Your function productFib takes an integer (prod) and returns an array:
 
 # [F(n), F(n+1), true] or {F(n), F(n+1), 1} or (F(n), F(n+1), True)
@@ -34,6 +41,7 @@
 #   fib[fib.index(fib.min)] = fib.reduce(:+) until fib.reduce(:*) >= prod
 #   [fib.min, fib.max, fib.reduce(:*) == prod]
 # end
+=end
 
 def productFib(prod)
   a, b = [0, 1]
@@ -41,4 +49,4 @@ def productFib(prod)
   [a, b, b * a == prod]
 end
 
-p productFib(80)
+p productFib(40)
