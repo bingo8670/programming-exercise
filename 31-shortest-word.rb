@@ -7,5 +7,4 @@ def find_short(s)
     return l # l: length of the shortest word
 end
 
-
 puts "最短的单词字母数是 #{find_short(s)}"
