@@ -25,23 +25,22 @@ begin
       controller = controller.push(word) if word =~/[A-Z].*Controller/
     end
   end
-  p url
-  p ip
-  p date
-  p clock
-  p controller
 ensure
   file.close
-  client = Mysql2::Client.new(
-      :host     => '127.0.0.1', # 主机
-      :username => 'root',      # 用户名
-      :password => '123123',    # 密码
-      :database => 'weblog',    # 数据库
-      :encoding => 'utf8'       # 编码
-      )
-    (url, ip, date, clock, controller).each do |i|
-      client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('#{i}')")
-    end
-    #client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('welcome/index.html.erb', '127.0.0.1', '2018-04-17', '12:02:59', 'WelcomeController#index')")
-
 end
+
+
+p url
+p ip
+p date
+p clock
+p controller
+
+client = Mysql2::Client.new(
+    :host     => '127.0.0.1', # 主机
+    :username => 'root',      # 用户名
+    :password => '123123',    # 密码
+    :database => 'weblog',    # 数据库
+    :encoding => 'utf8'       # 编码
+    )
+  #client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('welcome/index.html.erb', '127.0.0.1', '2018-04-17', '12:02:59', 'WelcomeController#index')")

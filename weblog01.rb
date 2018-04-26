@@ -24,17 +24,17 @@ file.chunk { |line|
         url = url.push(word)
       end
 
-      ip = ip.push(word) if word =~/\d{3}.\d.\d.\d/
+      ip = ip.push(word) if word =~/\d{3}\.\d\.\d\.\d/ && (count > ip.size)    # 只提取第一条URL
       #time = time.push(word) if word =~/\d{4}-\d{2}-\d{2}|\d{2}.\d{2}.\d{2}/
-      date = date.push(word) if word =~/\d{4}-\d{2}-\d{2}/
-      clock = clock.push(word) if word =~/\d{2}:\d{2}:\d{2}/
+      date = date.push(word) if word =~/\d{4}-\d{2}-\d{2}/ && (count > date.size)    # 只提取第一条URL
+      clock = clock.push(word) if word =~/^\d{2}\:\d{2}\:\d{2}$/ && (count > clock.size)    # 只提取第一条URL     ^,$ 分别代表起始位置，可用于精准匹配
       # \d\d\d\d 可简写为 \d{4}， | 表示 或
-      controller = controller.push(word) if word =~/[A-Z].*Controller/
+      controller = controller.push(word) if word =~/[A-Z].*Controller/ && (count > controller.size)    # 只提取第一条URL
     end
   end
 }
 
-p "> "
+p "共有#{count} 条日志记录，提取信息如下所示：> "
 p url
 p ip
 p date
