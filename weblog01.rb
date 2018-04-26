@@ -1,51 +1,54 @@
 require 'mysql2'
+lines = []
 url = []
 ip = []
 time = []
 date = []
 clock = []
 controller = []
-file = File.open("development.log")
-begin
-  file.each_line do |line|
-    #url = line.scan(/\w+\/+\w.*\s/)
+count = 0
+
+file = File.open("development.log")   # 文件目录
+
+
+# log以空行分段
+file.chunk { |line|
+  /\A\s*\z/ !~ line || nil        # log以空行分段
+}.each { |_, lines|               # lines 为一个记录段
+  count += 1                      # 第几条日志
+  lines.each do |line|
     words = line.split
     words.each do |word|
-      url = url.push(word) if word =~/\w+\/\w+/
+
+      if word =~/\w?\/\w?/ && (count > url.size)    # 只提取第一条URL
+        url = url.push(word)
+      end
+
       ip = ip.push(word) if word =~/\d{3}.\d.\d.\d/
       #time = time.push(word) if word =~/\d{4}-\d{2}-\d{2}|\d{2}.\d{2}.\d{2}/
       date = date.push(word) if word =~/\d{4}-\d{2}-\d{2}/
       clock = clock.push(word) if word =~/\d{2}:\d{2}:\d{2}/
       # \d\d\d\d 可简写为 \d{4}， | 表示 或
-      if word =~/[A-Z].*Controller/
-        word = word.scan(/[A-Z].*Controller/)
-        controller = controller.push(word)
-      end
+      controller = controller.push(word) if word =~/[A-Z].*Controller/
     end
   end
-  p "> url 有："
-  p url
-  p "> ip 有："
-  p ip
-  p "> time 有："
-  p date
-  p clock
-  p "> controller 有："
-  p controller
-ensure
-  file.close
-end
+}
 
-=begin
+p "> "
+p url
+p ip
+p date
+p clock
+p controller
+
 client = Mysql2::Client.new(
     :host     => '127.0.0.1', # 主机
     :username => 'root',      # 用户名
-    :password => '123456',    # 密码
-    :database => 'log',      # 数据库
+    :password => '123123',    # 密码
+    :database => 'weblog',    # 数据库
     :encoding => 'utf8'       # 编码
     )
-results = client.query("insert into table log(url)")
-results.each do |row|
-  puts row
+url.zip(ip, date, clock, controller) do |a, b, c, d, e|
+  # zip 方法会将接收器和参数传来的数组元素逐一取出，而且每次都会启动块。
+  client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('#{a}', '#{b}', '#{c}', '#{d}', '#{e}')")
 end
-=end

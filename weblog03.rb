@@ -1,19 +1,18 @@
 require 'mysql2'
+lines = []
 url = []
 ip = []
 time = []
 date = []
 clock = []
 controller = []
-count = 0
 file = File.open("development.log")
 
-begin
-  file.each_line do |line|
-    #url = line.scan(/\w+\/+\w.*\s/)
-    if line.scan(/Started/)
-      count += 1
-    end
+# log以空行分段
+file.chunk { |line|
+  /\A\s*\z/ !~ line || nil        # log以空行分段
+}.each { |_, lines|
+  lines.each do |line|
     words = line.split
     words.each do |word|
       url = url.push(word) if word =~/\w+\/\w+/
@@ -25,13 +24,14 @@ begin
       controller = controller.push(word) if word =~/[A-Z].*Controller/
     end
   end
+
+  p "> "
   p url
   p ip
   p date
   p clock
   p controller
-ensure
-  file.close
+
   client = Mysql2::Client.new(
       :host     => '127.0.0.1', # 主机
       :username => 'root',      # 用户名
@@ -39,9 +39,14 @@ ensure
       :database => 'weblog',    # 数据库
       :encoding => 'utf8'       # 编码
       )
-    (url, ip, date, clock, controller).each do |i|
-      client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('#{i}')")
-    end
-    #client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('welcome/index.html.erb', '127.0.0.1', '2018-04-17', '12:02:59', 'WelcomeController#index')")
+  url.zip(ip, date, clock, controller) do |a, b, c, d, e|
+    # zip 方法会将接收器和参数传来的数组元素逐一取出，而且每次都会启动块。
+    client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('#{a}', '#{b}', '#{c}', '#{d}', '#{e}')")
+  end
+}
 
-end
+=begin
+    #(url, ip, date, clock, controller).each do |i|
+    #  client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('#{i}')")
+    #end
+=end
