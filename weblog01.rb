@@ -48,7 +48,15 @@ client = Mysql2::Client.new(
     :database => 'weblog',    # 数据库
     :encoding => 'utf8'       # 编码
     )
+=begin
 url.zip(ip, date, clock, controller) do |a, b, c, d, e|
   # zip 方法会将接收器和参数传来的数组元素逐一取出，而且每次都会启动块。
   client.query("INSERT INTO Weblog(Url, Ip, Date, Clock, Controller) VALUES ('#{a}', '#{b}', '#{c}', '#{d}', '#{e}')")
 end
+#需要五个栏位
+=end
+
+=begin
+思路概述：
+先将日志文件按空行分割为一个个的段落lines，lines是一个数组，每一行是数组的一个元素，针对每个元素进行匹配；
+=end

@@ -87,6 +87,7 @@ Migrating to DeviseCreateUsers (20180417043022)
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+
 Started GET "/" for 127.0.0.1 at 2018-04-17 12:32:08 +0800
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by WelcomeController#index as HTML
@@ -145,6 +146,7 @@ Migrating to CreateThreats (20180417055924)
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+
 Started GET "/threats" for 127.0.0.1 at 2018-04-17 14:04:16 +0800
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by ThreatsController#index as HTML
@@ -172,6 +174,7 @@ Did you mean?  new_password_path):
     6:     <thead>
 
 app/views/threats/index.html.erb:3:in `_app_views_threats_index_html_erb__665161699353813191_70146801769220'
+
 Started GET "/threats" for 127.0.0.1 at 2018-04-17 14:06:07 +0800
 Processing by ThreatsController#index as HTML
   Rendering threats/index.html.erb within layouts/application
@@ -238,6 +241,7 @@ puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
 puma (3.11.4) lib/puma/server.rb:446:in `process_client'
 puma (3.11.4) lib/puma/server.rb:306:in `block in run'
 puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
 Started GET "/threats" for 127.0.0.1 at 2018-04-17 14:06:14 +0800
 Processing by ThreatsController#index as HTML
   Rendering threats/index.html.erb within layouts/application
@@ -292,6 +296,7 @@ Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started POST "/threats" for 127.0.0.1 at 2018-04-17 14:30:41 +0800
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by ThreatsController#create as HTML
@@ -325,6 +330,7 @@ app/controllers/threats_controller.rb:15:in `create'
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+
 Started POST "/threats" for 127.0.0.1 at 2018-04-17 14:34:34 +0800
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by ThreatsController#create as HTML
@@ -337,6 +343,7 @@ Completed 404 Not Found in 17ms (ActiveRecord: 0.8ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started GET "/" for 127.0.0.1 at 2018-04-17 14:35:00 +0800
 
 ActionController::RoutingError (uninitialized constant ThreatController):
@@ -395,6 +402,7 @@ puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
 puma (3.11.4) lib/puma/server.rb:446:in `process_client'
 puma (3.11.4) lib/puma/server.rb:306:in `block in run'
 puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
 Started GET "/" for 127.0.0.1 at 2018-04-17 14:35:52 +0800
 Processing by ThreatsController#index as HTML
   Rendering threats/index.html.erb within layouts/application
@@ -427,6 +435,7 @@ Completed 404 Not Found in 6ms (ActiveRecord: 0.4ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started POST "/threats" for 127.0.0.1 at 2018-04-17 14:38:12 +0800
 Processing by ThreatsController#create as HTML
   Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4c2inx1H/XTn+/fBTZR6JOyGjy/FPmdD/mFaTxsyjdGTqafsLnVj43YCxkeO15/eA1NoDTjpF1fV9E7DEHhBg==", "threat"=>{"title"=>"sdfa ", "description"=>"adsf a "}, "commit"=>"Submit"}
@@ -438,6 +447,7 @@ Completed 404 Not Found in 6ms (ActiveRecord: 1.1ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started POST "/threats" for 127.0.0.1 at 2018-04-17 14:38:16 +0800
 Processing by ThreatsController#create as HTML
   Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4c2inx1H/XTn+/fBTZR6JOyGjy/FPmdD/mFaTxsyjdGTqafsLnVj43YCxkeO15/eA1NoDTjpF1fV9E7DEHhBg==", "threat"=>{"title"=>"sdfa ", "description"=>"adsf a "}, "commit"=>"Submit"}
@@ -449,6 +459,7 @@ Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started POST "/threats" for 127.0.0.1 at 2018-04-17 14:38:23 +0800
 Processing by ThreatsController#create as HTML
   Parameters: {"utf8"=>"✓", "authenticity_token"=>"jQYEQpxezmyngpAsKp6uN2Gbg3Zudj2S6L0tCNcQzgTnb0oydTqhCc589t7K1nrgQOAkq3q0u2tngYMGVqE3ig==", "threat"=>{"title"=>"sdfa ", "description"=>"adsf a "}, "commit"=>"Submit"}
@@ -460,6 +471,7 @@ Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started GET "/threats/new" for 127.0.0.1 at 2018-04-17 14:39:38 +0800
 Processing by ThreatsController#new as HTML
   Rendering threats/new.html.erb within layouts/application
@@ -481,6 +493,7 @@ Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
 ActiveRecord::RecordNotFound (Couldn't find Threat with 'id'=):
 
 app/controllers/threats_controller.rb:15:in `create'
+
 Started POST "/threats" for 127.0.0.1 at 2018-04-17 14:41:21 +0800
 Processing by ThreatsController#create as HTML
   Parameters: {"utf8"=>"✓", "authenticity_token"=>"BCbv/9MYRJzELG+NfPfE73mVy7j3OsaeU38aTIhUm5xuT6GPOnwr+a3SCX+cvxA4WO5sZeP4QGfcQ7RCCeViEg==", "threat"=>{"title"=>"asdf a", "description"=>"asd fa "}, "commit"=>"Submit"}
