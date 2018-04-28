@@ -1,4 +1,4 @@
-# 请输入 ruby weblog02.rb development.log
+# 请输入 ruby weblog03.rb development.log
 require 'mysql2'
 lines = []
 url = []
@@ -25,7 +25,7 @@ file.chunk { |line|
   # \d\d\d\d 可简写为 \d{4}， | 表示 或
   controller  = lines[1].scan(/[A-Z]\w*Controller\#\w*/) if lines[1] != nil
   datas       = [url + ip + time + controller]
-  dataes      = dataes.push(datas)
+  dataes      = dataes.push(datas) if datas != [[]]    # 删除空条目
 
   p "正在解析第#{count} 条日志记录，提取信息如下所示👇"
   p datas

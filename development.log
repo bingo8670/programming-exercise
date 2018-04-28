@@ -173,8 +173,6 @@ Did you mean?  new_password_path):
     5:   <table class="table table-hover">
     6:     <thead>
 
-app/views/threats/index.html.erb:3:in `_app_views_threats_index_html_erb__665161699353813191_70146801769220'
-
 Started GET "/threats" for 127.0.0.1 at 2018-04-17 14:06:07 +0800
 Processing by ThreatsController#index as HTML
   Rendering threats/index.html.erb within layouts/application
