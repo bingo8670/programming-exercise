@@ -27,10 +27,14 @@ file.chunk { |line|
   datas       = [url + ip + time + controller]
   dataes      = dataes.push(datas) if datas != [[]]    # 删除空条目
 
-  p "正在解析第#{count} 条日志记录，提取信息如下所示👇"
-  p datas
-  p "------------------------"
+  # p "正在解析第#{count} 条日志记录，提取信息如下所示👇"
+  # p datas
+  # p "------------------------"
 }
+
+p dataes
+
+
   client = Mysql2::Client.new(
       :host     => '127.0.0.1', # 主机
       :username => 'root',      # 用户名
@@ -38,12 +42,13 @@ file.chunk { |line|
       :database => 'weblog',    # 数据库
       :encoding => 'utf8'       # 编码
       )
-  dataes.each do |datas|
-    datas.each do |i|
-      client.query("INSERT INTO Weblog(Url, Ip, Time, Controller) VALUES ('#{i[0]}', '#{i[1]}', '#{i[2]}', '#{i[3]}')")
-    end
-  end
+  # dataes.each do |datas|
+  #   datas.each do |i|
+  #     client.query("INSERT INTO Weblog(Url, Ip, Time, Controller) VALUES ('#{i[0]}', '#{i[1]}', '#{i[2]}', '#{i[3]}')")
+  #   end
+  # end
 
+# p "#{dataes[0][0][1]}'"
 
 # 已验证单行数据可插入成功
-  #client.query("INSERT INTO Weblog(Url, Ip, Time, Controller) VALUES ('#{dataes[0][0][0]}', '#{dataes[0][0][1]}', '#{dataes[0][0][2]}', '#{dataes[0][0][3]} ')")
+  # client.query("INSERT INTO Weblog(Url, Ip, Time, Controller) VALUES ('#{dataes[0][0][0]}', '#{dataes[0][0][1]}', '#{dataes[0][0][2]}', '#{dataes[0][0][3]} ')")
