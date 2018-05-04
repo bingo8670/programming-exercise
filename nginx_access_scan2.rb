@@ -1,18 +1,7 @@
-def time_translate(string)
-  nstring = string.dup           ## 返回自己的副本
-  nstring.gsub!(/Jan/, "1")
-  nstring.gsub!(/Feb/, "2")
-  nstring.gsub!(/Mar/, "3")
-  nstring.gsub!(/Apr/, "4")
-  nstring.gsub!(/May/, "5")
-  nstring.gsub!(/Jun/, "6")
-  nstring.gsub!(/Jul/, "7")
-  nstring.gsub!(/Aug/, "8")
-  nstring.gsub!(/Sep/, "9")
-  nstring.gsub!(/Oct/, "10")
-  nstring.gsub!(/Nov/, "11")
-  nstring.gsub!(/Dec/, "12")
+require 'digest/md5'
+require "rails"
 
-end
+# 这里的 to_time 方法是 rails 里的！
+p "02/May/2018 15:44:03".to_time.strftime("%Y-%m-%d %H:%M:%S")
 
-p time_translate("May")
+p Digest::MD5.hexdigest('abc')      #=> "90015098..."
