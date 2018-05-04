@@ -2,6 +2,7 @@
 
 require 'mysql2'
 require 'digest/md5'
+require 'rails'
 
 client = Mysql2::Client.new(
     :host     => '127.0.0.1', # 主机
@@ -12,18 +13,20 @@ client = Mysql2::Client.new(
     )
 
 
-lines  = []
-ip     = []
-time   = []
-actor = []
-url    = []
-state  = []
-length = []
-refer  = []
-agent  = []
-datas  = []
-dataes = []
-count  = 0
+lines   = []
+ip      = []
+time    = []
+actor   = []
+url     = []
+url_md5 = []
+md5     = []
+state   = []
+length  = []
+refer   = []
+agent   = []
+datas   = []
+dataes  = []
+count   = 0
 
 filename = ARGV[0]
 file = File.open(filename)   # 文件目录
@@ -33,20 +36,42 @@ file.each_line do |line|
   count      += 1
   words       = line.split
   ip          = line.scan(/^\d{2}\.\d{2}\.\d{2}\.\d{2}/)
+
+# 处理time格式问题，先取消 2018:15 中间的“：”，然后使用 rails的to_time、strftime 方法
   time        = line.scan(/\d+\/\w+\/\d{4}\:\d{2}\:\d{2}\:\d{2}/)
+  time        = time[0].sub(/:/, ' ')
+  time        = [ time.to_time.strftime("%Y-%m-%d %H:%M:%S") ]
+
   actor       = [line.scan(/[A-Z]{3}/)[0]]
+
+# 要求URL唯一，如果重复只保留第一条；将 URL 转换为 md5 加密值，经过比对，如果重复，URL = []
+# Digest::MD5.hexdigest('abc')      #=> "90015098..."
   url         = [line.scan(/\w*\/\w*\/*\w*\/*\w*/)[1]]
+  url_md5     = [ Digest::MD5.hexdigest(url[0]) ]
+  if md5.include?(url_md5)
+    url = []
+  else
+    md5       = md5.push(url_md5)
+    url       = [line.scan(/\w*\/\w*\/*\w*\/*\w*/)[1]]
+  end
+
   state       = [line.scan(/\d{3}/)[2]]
   length      = [words[9]]
   refer       = [words[10]]
   agent       = [words[-7..-2].join(" ")]
-  datas       = [ ip + time + actor + url + state + length + refer + agent ]   # 数据类型不一样，无法导入mysql
-  dataes      = dataes.push(datas) if datas != [[]]    # 删除空条目
-  # p ip
+
+  if url == []
+    datas = []
+  else
+    datas     = [ ip + time + actor + url + state + length + refer + agent ]
+  end
+
+  dataes      = dataes.push(datas) unless datas == []     # 删除空条目
+  p datas
 end
 
 p "共有#{count} 条日志记录，提取信息如上所示👆"    # 如上所示👆、如下所示👇
-p dataes
+# p dataes
 # 显示每行提取字段的合集，然后再合集，比较美观；
 
 

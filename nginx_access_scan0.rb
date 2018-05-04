@@ -15,7 +15,6 @@ client = Mysql2::Client.new(
 
 lines  = []
 ip     = []
-# time0  = []
 time   = []
 actor  = []
 url    = []
