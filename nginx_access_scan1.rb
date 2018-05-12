@@ -67,7 +67,7 @@ file.each_line do |line|
   end
 
   dataes      = dataes.push(datas) unless datas == []     # 删除空条目
-  p datas
+  p datas unless datas == []      # 只显示非空项
 end
 
 p "共有#{count} 条日志记录，提取信息如上所示👆"    # 如上所示👆、如下所示👇

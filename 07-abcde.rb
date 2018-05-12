@@ -38,4 +38,4 @@ else
 
 end
 
-puts "结果是___#{a}_____(A或B或C或D或E)"
+puts "结果是#{a}"  # (A或B或C或D或E)

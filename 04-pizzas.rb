@@ -9,5 +9,5 @@ people = gets.to_i
 # .....
 a = pizzas/people
 b = pizzas%people
-puts "每人可分得几片: ___#{a}______ 片"
-puts "还剩下几片: _____#{b}____ 片"
+puts "每人可分得几片:#{a}片"
+puts "还剩下几片: #{b}片"

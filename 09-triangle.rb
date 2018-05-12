@@ -10,6 +10,6 @@ a = gets.to_i
 print "请输入直角三角形的底边，然后按 Enter: "
 b = gets.to_i
 
-answer = calculate_area(a,b)
+area = calculate_area(a,b)
 
-puts "直角三角形的面积是: #{answer}"
+puts "直角三角形的面积是: #{area}"

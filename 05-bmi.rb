@@ -21,6 +21,7 @@ elsif a >= 24
 else
   b = "正常"
 end
-puts "您的 BMI 是: ___#{a}______"
-
-puts "您的 BMI 结果是: ____#{b}_____(过轻或正常或过重)"
+# puts "您的 BMI 是: #{a}"
+puts format("您的 BMI 是: %.2f", a)    # 保留两位小数
+# format 方法用于格式序列及其宽度，%s = 字符串，%i = 向下整数，%f = 浮点数
+puts "您的 BMI 结果是: #{b}"  # (过轻或正常或过重)
