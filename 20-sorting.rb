@@ -14,4 +14,4 @@ end
 arr =  [7, 68, 42, 46, 9, 91, 77, 46, 86, 1]
 array = filter_even(arr).uniq.sort
 
-puts "___#{array}_____" # 应该是 [42, 46, 68, 86]
+puts "#{array}" # 应该是 [42, 46, 68, 86]

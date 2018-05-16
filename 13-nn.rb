@@ -13,9 +13,3 @@ while i <= n
   end
   i+=1
 end
-
-# while ( ... )
-#   while ( ...)
-#
-#   end
-# end

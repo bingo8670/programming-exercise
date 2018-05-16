@@ -51,7 +51,7 @@ min = min(arr)
 
 puts arr.to_s
 
-puts "总和是 __#{sum}___"
-puts "平均是 __#{avg}___"
-puts "最大值是 __#{max}___"
-puts "最小值是 __#{min}___"
+puts "总和是 #{sum}"
+puts "平均是 #{avg}"
+puts "最大值是 #{max}"
+puts "最小值是 #{min}"
