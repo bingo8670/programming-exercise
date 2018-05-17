@@ -5,7 +5,7 @@ require 'net/smtp'
 
 message = <<MESSAGE_END
 From: Private Person <username@163.com>
-To: A Test User <307286130@qq.com>
+To: A Test User <12312312@qq.com>
 Subject: SMTP e-mail test
 
 This is a test e-mail message.
@@ -16,5 +16,5 @@ Net::SMTP.start('smtp.163.com',
                 'localhost',
                 'username', '******', :plain)  do |smtp|
   smtp.send_message message, 'username@163.com',
-                             '307286130@qq.com'
+                             '12312312@qq.com'
 end
