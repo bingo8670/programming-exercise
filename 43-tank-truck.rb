@@ -27,3 +27,9 @@ p tankvol(60,120,3500) # => 1750
 p tankvol(40,120,3500) # => 1021 (calculation gives about: 1021.26992027)
 p tankvol(80,120,3500) # => 2478 (calculation gives about: 2478.73007973)
 p tankvol(5, 7, 3848) # => 2940
+
+# better mothod
+# def tankvol(h, d, vt)
+#   tetta = Math.acos(1-2*h/d.to_f)
+#   (vt/Math::PI*(tetta - 0.5*Math.sin(2*tetta))).floor
+# end

@@ -5,7 +5,7 @@ require 'net/smtp'
 
 FROM_ADDRESS = "18535150344@163.com"
 
-def reply(to, subject, msg)
+def send(to, subject, msg)
   mail = ( "To: #{to}\r\n" +
   "From: #{FROM_ADDRESS}\r\n" +
   "Subject: #{subject}\r\n" +
@@ -15,8 +15,10 @@ def reply(to, subject, msg)
   Net::SMTP.start('smtp.163.com',
                   25,
                   'localhost',
-                  '1811111111', '******', :plain) do |smtp|
+                  '1811111111', '123123Aa', :plain) do |smtp|
   smtp.send_mail(mail, FROM_ADDRESS,
-  [ to, 'xxxx@qq.com' ])
+  [ to, '307286130@qq.com' ])
   end
 end
+
+send("307286130",)
